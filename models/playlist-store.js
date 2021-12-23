@@ -4,7 +4,7 @@ const logger = require("../utils/logger.js");
 
 const playlistStore = {
   async getPlaylist(id) {
-    const query = 'SELECT * FROM playlist2_playlists WHERE id=$1';
+    const query = 'SELECT * FROM playlist_playlists WHERE id=$1';
     const values = [id];
     try {
       let result = await dataStoreClient.query(query, values);
@@ -14,7 +14,7 @@ const playlistStore = {
     }
   },
   async getAllPlaylists() {
-    const query = 'SELECT * FROM playlist2_playlists';
+    const query = 'SELECT * FROM playlist_playlists';
     try {
       let result = await dataStoreClient.query(query);
       return result.rows;
