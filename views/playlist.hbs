@@ -1,6 +1,9 @@
 {{> menu}}
 
-<div class="border p-2 my-2">
-    <h2 class="text-center">{{playlist.title}}</h2>
-    {{> listsongs}}
-</div>
+<section class="ui center aligned middle aligned segment">
+  <h2 class="ui header">
+    {{playlist.title}}
+  </h2>
+  {{> listsongs}}
+  {{> addsong}}
+</section>

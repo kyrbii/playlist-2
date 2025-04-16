@@ -22,6 +22,17 @@ const playlist = {
         await songStore.removeSong(songId);
         response.redirect("/playlist/" + playlistId);
     },
+    async addSong(request, response) {
+        const playlistId = request.params.id;
+        const newSong = {
+          title: request.body.title,
+          artist: request.body.artist,
+          duration: Number(request.body.duration)
+        };
+        logger.debug("New Song", newSong);
+        await songStore.addSong(playlistId, newSong);
+        response.redirect("/playlist/" + playlistId);
+      },      
 };
 
 module.exports = playlist;

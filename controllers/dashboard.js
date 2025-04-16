@@ -11,7 +11,16 @@ const dashboard = {
     };
     logger.info('about to render', playLists);
     response.render("dashboard", viewData);
-  }
+  },
+  async addPlaylist(request, response) {
+    const newPlayList = {
+        title: request.body.title,
+    };
+    logger.debug("Creating a new Playlist", newPlayList);
+    await playlistStore.addPlaylist(newPlayList);
+    response.redirect("/dashboard");
+  },
+
 };
 
 module.exports = dashboard;

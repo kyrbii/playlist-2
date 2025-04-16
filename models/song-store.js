@@ -22,6 +22,16 @@ const songStore = {
             logger.error("Unable to remove song from playlist", e);
         };
     },
+    async addSong(playlistId, newSong) {
+        const query = 'INSERT INTO playlist_songs (TITLE, ARTIST, DURATION, PLAYLIST_ID) VALUES($1, $2, $3, $4)';
+        const values = [newSong.title, newSong.artist, newSong.duration, playlistId];
+        try {
+            await dataStoreClient.query(query, values);
+        } catch (e) {
+            logger.error("Error adding song", e);
+        }
+},
+
 };
 
 module.exports = songStore;

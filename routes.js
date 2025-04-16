@@ -12,4 +12,7 @@ router.get("/dashboard", dashboard.index);
 router.get('/playlist/:id', playlist.index);
 router.get('/playlist/:id/deletesong/:songid', playlist.deleteSong);
 
+router.post('/playlist/:id/addsong', playlist.addSong);
+router.post('/dashboard/addplaylist',dashboard.addPlaylist);
+
 module.exports = router;

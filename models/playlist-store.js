@@ -22,6 +22,16 @@ const playlistStore = {
       logger.error("Error fetching all playlists", e);
     }
   },
+  async addPlaylist(playList) {
+    try {
+      const query = 'INSERT INTO playlist_playlists (TITLE) VALUES($1)';
+      const values = [playList.title];
+      await dataStoreClient.query(query, values);
+    } catch (e) {
+      logger.error("Error cannot add playlist", e);
+    }
+  },
+  
 };
 
 module.exports = playlistStore;
